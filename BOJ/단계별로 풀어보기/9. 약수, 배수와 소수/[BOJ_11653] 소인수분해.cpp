@@ -34,5 +34,7 @@ int main()
 
 	for (auto element : answer)
 		cout << element << endl;
+	
+	delete answer;
 	return 0;
 }
