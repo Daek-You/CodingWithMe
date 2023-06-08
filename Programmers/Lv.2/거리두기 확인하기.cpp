@@ -2,7 +2,6 @@
 #include <vector>
 using namespace std;
 const char CANDIDATE = 'P';
-const char EMPTY_TABLE = 'O';
 const char PARTITION = 'X';
 const int MAX_MANHATTAN_DISTANCE = 2;
 
@@ -46,7 +45,7 @@ void Combination(const vector<string>& waitingRoom, const vector<pair<int, int>>
             if (isEqualRow and minCol != -1) {
                 int row = candidates[0].first;
 
-                if (waitingRoom[row][minCol + 1] != 'X')
+                if (waitingRoom[row][minCol + 1] != PARTITION)
                     result = false;
                 return;
             }
@@ -55,14 +54,14 @@ void Combination(const vector<string>& waitingRoom, const vector<pair<int, int>>
             if (isEqualCol and minRow != -1) {
                 int col = candidates[0].second;
 
-                if (waitingRoom[minRow + 1][col] != 'X')
+                if (waitingRoom[minRow + 1][col] != PARTITION)
                     result = false;
                 return;
             }
 
             // 대각선으로 한 칸 띄어져 있는 경우 (r1, c1), (r2, c2)라고 한다면,
             // 양 옆 테이블 좌표는 [r1][c2], [r2][c1]
-            if ((!isEqualRow and !isEqualCol) and (waitingRoom[candidates[0].first][candidates[1].second] != 'X' or waitingRoom[candidates[1].first][candidates[0].second] != 'X')) {
+            if ((!isEqualRow and !isEqualCol) and (waitingRoom[candidates[0].first][candidates[1].second] != PARTITION or waitingRoom[candidates[1].first][candidates[0].second] != PARTITION)) {
                 result = false;
             }
         }
