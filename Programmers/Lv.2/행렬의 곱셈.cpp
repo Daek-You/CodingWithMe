@@ -9,12 +9,6 @@ int DotProduct(const vector<int>& vec1, const vector<int>& vec2) {
     return sum;
 }
 
-void Swap(Matrix& matrix, int row, int col) {
-    auto data = matrix[row][col];
-    matrix[row][col] = matrix[col][row];
-    matrix[col][row] = data;
-}
-
 Matrix TransposedMatrix(const Matrix& originMatrix) {
     /*
         내적 계산을 쉽게 하기 위해, 다음처럼 바꾸는 변환 과정 진행
@@ -26,7 +20,7 @@ Matrix TransposedMatrix(const Matrix& originMatrix) {
     Matrix result;
     int originRow = originMatrix.size();
     int originCol = originMatrix[0].size();
-    
+
     // 열 방향으로 읽기
     for (int c = 0; c < originCol; c++) {
         vector<int> row;
