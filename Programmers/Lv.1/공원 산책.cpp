@@ -22,6 +22,7 @@ Position GetStartPosition(const vector<string>& park) {
     return Position(-1, -1);
 }
 
+
 void ExecuteInstruction(const vector<string>& park, const Direction& direction, Position currentPosition, Position& originPosition, int distance) {
     int row = currentPosition.first;
     int col = currentPosition.second;
@@ -38,6 +39,7 @@ void ExecuteInstruction(const vector<string>& park, const Direction& direction, 
     col += direction.second;
     ExecuteInstruction(park, direction, make_pair(row, col), originPosition, distance - 1);
 }
+
 
 vector<int> solution(vector<string> park, vector<string> routes) {
     Position puppyRobotPositoin = GetStartPosition(park);

@@ -1,7 +1,7 @@
 #include <vector>
 #include <queue>
 using namespace std;
-const int MAX_RATE = 100;
+const int MAX_RATE = 99;
 
 vector<int> solution(vector<int> progresses, vector<int> speeds) {
     vector<int> answer;
@@ -9,9 +9,7 @@ vector<int> solution(vector<int> progresses, vector<int> speeds) {
     int length = progresses.size();
 
     for (int i = 0; i < length; i++) {
-        int remainigRate = MAX_RATE - progresses[i];
-        int requiredDays = remainigRate / speeds[i];
-        requiredDays += (remainigRate % speeds[i] != 0) ? 1 : 0;
+        int requiredDays = (MAX_RATE - progresses[i]) / speeds[i] + 1;
 
         if (days.empty()) {
             days.push(requiredDays);
