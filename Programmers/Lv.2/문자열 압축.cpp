@@ -3,15 +3,15 @@ using namespace std;
 
 int solution(string s) {
 	int answer = 10000;
-	int divisor = 1;
+	int extractNum = 1;
 
-	while (divisor <= s.length()) {
+	while (extractNum <= s.length()) {
 		string preToken = "";
 		string compressedString = "";
 		int repeatCount = 1;
 
-		for (int i = 0; i < s.length(); i += divisor) {
-			string token = s.substr(i, divisor);
+		for (int i = 0; i < s.length(); i += extractNum) {
+			string token = s.substr(i, extractNum);
 
 			if (preToken.empty()) {
 				preToken = token;
@@ -40,7 +40,7 @@ int solution(string s) {
 		compressedString += strRepeatCount;
 		compressedString += preToken;
 		answer = min(answer, (int)compressedString.length());
-		divisor++;
+		extractNum++;
 	}
 
 
