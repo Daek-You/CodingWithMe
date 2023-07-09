@@ -14,8 +14,6 @@ struct Emoticon {
     int _discountRate;
 };
 
-
-
 void Search(const User& users, const vector<int>& emoticons, vector<Emoticon>& discountedEmoticons, vector<int>& answers, int emoticonIdx) {
     if (discountedEmoticons.size() == emoticons.size()) {
         int totalBuyingPrice = 0;
@@ -61,16 +59,10 @@ void Search(const User& users, const vector<int>& emoticons, vector<Emoticon>& d
     }
 }
 
-
-pair<int, int> FindOptimizeCase(const User& users, const vector<int>& emoticons) {
+vector<int> solution(vector<vector<int>> users, vector<int> emoticons) {
     vector<int> answers { 0, 0 };
     vector<Emoticon> discountedEmoticons;
-
+    
     Search(users, emoticons, discountedEmoticons, answers, 0);
-    return make_pair(answers[0], answers[1]);
-}
-
-vector<int> solution(vector<vector<int>> users, vector<int> emoticons) {
-    auto answer = FindOptimizeCase(users, emoticons);
-    return { answer.first, answer.second };
+    return answers;
 }
