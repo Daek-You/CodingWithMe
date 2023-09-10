@@ -61,10 +61,3 @@ vector<int> solution(vector<string> operations) {
 
     return dpQueue.GetAnswer();
 }
-
-int main()
-{
-    vector<string> input{ "I -45", "I 653", "D 1", "I -642", "I 45", "I 97", "D 1", "D -1", "I 333" };
-    vector<int> answer = solution(input);
-    return 0;
-}
