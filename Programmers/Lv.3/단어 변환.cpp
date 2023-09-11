@@ -2,14 +2,14 @@
 #include <vector>
 using namespace std;
 
-bool IsDifferenceOnlyOneCharacter(const string& source, const string& target)
+bool IsDifferentOnlyOneCharacter(const string& source, const string& target)
 {
     if (source.length() != target.length())
         return false;
 
     int differenceCount = 0;
     int N = source.length();
-    
+
     for (int i = 0; i < N; i++)
     {
         if (source[i] != target[i])
@@ -35,7 +35,7 @@ void DFS(string begin, const string& target, const vector<string>& words, vector
 
     for (int i = 0; i < words.size(); i++)
     {
-        if (!IsDifferenceOnlyOneCharacter(words[i], begin) or visited[i])
+        if (!IsDifferentOnlyOneCharacter(words[i], begin) or visited[i])
             continue;
 
         visited[i] = true;
