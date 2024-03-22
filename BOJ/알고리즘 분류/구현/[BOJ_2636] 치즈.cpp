@@ -58,30 +58,18 @@ void SetExternalAir(int row, int column)
     }
 }
 
-void BFS(int row, int column)
+bool IsAirExposedCheese(int row, int column)
 {
-    queue<Point> positions;
-    positions.push(Point(row, column));
-
-    while (!positions.empty())
+    for (const Point& direction : Directions)
     {
-        row = positions.front().first;
-        column = positions.front().second;
-        positions.pop();
+        int nextRow = row + direction.first;
+        int nextColumn = column + direction.second;
 
-        for (const Point& direction : Directions)
-        {
-            int nextRow = row + direction.first;
-            int nextColumn = column + direction.second;
-
-            if (Field[nextRow][nextColumn] == AIR)
-            {
-                Field[row][column] = AIR_EXPOSED_CHEESE;
-                AirExposedCheeses.push(Point(row, column));
-                break;
-            }
-        }
+        if (Field[nextRow][nextColumn] == AIR)
+            return true;
     }
+
+    return false;
 }
 
 void FindAirExposedCheeses()
@@ -92,7 +80,12 @@ void FindAirExposedCheeses()
         {
             if (Field[r][c] == AIR or Field[r][c] == VACUUM or Field[r][c] == AIR_EXPOSED_CHEESE)
                 continue;
-            BFS(r, c);
+
+            if (IsAirExposedCheese(r, c))
+            {
+                Field[r][c] = AIR_EXPOSED_CHEESE;
+                AirExposedCheeses.push(Point(r, c));
+            }
         }
     }
 }
